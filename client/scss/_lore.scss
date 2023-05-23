@@ -5,5 +5,14 @@ body {
 
 .lore {
   display: flex;
-  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loreOutput {
+  border: solid 1px white;
+  margin: 1em;
+  width: 100%;
+  height: 350px;
 }

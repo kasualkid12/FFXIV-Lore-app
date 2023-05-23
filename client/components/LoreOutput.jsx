@@ -5,3 +5,5 @@ const LoreOutput = () => {
     
   </div>
 }
+
+export default LoreOutput
