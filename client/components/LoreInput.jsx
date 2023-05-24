@@ -1,11 +1,20 @@
 import React from "react";
 
-const LoreInput = () => {
+const LoreInput = (props) => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault
+  }
+
+  const handleChange = (e) => {
+    props.setQuery(e.target.value)
+  }
+
   return <div>
     <form>
-      <label>
+      <label onSubmit={handleSubmit}>
         Query:
-        <input type="text" />
+        <input type="text" onChange={handleChange}/>
       </label>
       <input type="submit" value="Submit" />
     </form>

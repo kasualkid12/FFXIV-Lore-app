@@ -1,8 +1,8 @@
 import React from "react";
 
-const LoreOutput = () => {
+const LoreOutput = (props) => {
   return <div className="loreOutput">
-    
+    <p>{props.query}</p>
   </div>
 }
 

@@ -7,7 +7,7 @@ apiController.getLore = async (req, res, next) => {
     const response = await fetch(`https://xivapi.com/lore?string=legendary&columns=Text,Data&page=2&private_key=${private_key}`);
     const data = await response.json()
     console.log(data)
-    res.locals.lore = 'nothing yet'
+    res.locals.lore = data
     return next()
   }
   catch(err) {
