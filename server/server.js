@@ -5,8 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Require routers
-const apiRouter = require('./routes/api');
-const loreRouter = require('./routes/lore');
+const apiRouter = require('./routes/api.js');
+const loreRouter = require('./routes/lore.js');
+
+app.get('/testerror', (req, res) => {
+  throw new Error();
+});
 
 // Parse all incoming JSON
 app.use(express.json());
@@ -15,7 +19,7 @@ app.use(express.json());
 // app.use('/api/lore', loreRouter);
 
 // Forward all rquests al /api to api router
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 // Catch all non-valid routes
 app.use('/', (req, res) => {
@@ -24,7 +28,7 @@ app.use('/', (req, res) => {
 });
 
 // Global Error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
@@ -32,7 +36,7 @@ app.use((err, req, res) => {
       err: 'An error occured',
     },
   };
-  const error = Object.create(defaultErr, err);
+  const error = Object.create(defaultErr,  err);
   console.log(error.log);
   res.status(error.status).send(error.message);
 });
