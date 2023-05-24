@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const LoreOutput = (props) => {
-  return <div className="loreOutput">
-    <p>{props.query}</p>
-  </div>
-}
+  return (
+    <div className="loreOutput">
+      <p>{props.api}</p>
+    </div>
+  );
+};
 
-export default LoreOutput
+export default LoreOutput;

@@ -3,15 +3,15 @@ import LoreInput from './LoreInput.jsx';
 import LoreOutput from './LoreOutput.jsx';
 
 const Lore = () => {
-  // state here? pass down to children?
-  // what state do I need?
-  const [ query, setQuery ] = useState();
+  const [query, setQuery] = useState('');
+  const [api, setApi] = useState();
+  const [data, setData] = useState({});
 
   return (
     <div className="lore">
       <h1>FFXIV LORE!!</h1>
-      <LoreInput setQuery={setQuery}/>
-      <LoreOutput query={query}/>
+      <LoreInput setApi={setApi} query={query} setQuery={setQuery} data={data} setData={setData} />
+      <LoreOutput api={api} />
     </div>
   );
 };

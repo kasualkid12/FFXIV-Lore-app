@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useEffect } from 'react';
 
 const LoreInput = (props) => {
 
+  useEffect(async () => {
+    const response = await fetch('/api');
+    const data = await response.json();
+    console.log(data);
+    props.setData(data);
+  }, [])
+
   const handleSubmit = (e) => {
-    e.preventDefault
-  }
+    e.preventDefault();
+    props.setApi(props.data.Results);
+    props.setQuery('')
+  };
 
   const handleChange = (e) => {
-    props.setQuery(e.target.value)
-  }
+    props.setQuery(e.target.value);
+  };
 
-  return <div>
-    <form>
-      <label onSubmit={handleSubmit}>
-        Query:
-        <input type="text" onChange={handleChange}/>
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
-}
+  return (
+    <div>
+      <form>
+        <label onSubmit={handleSubmit}>
+          Query:
+          <input type="text" value={props.query} onChange={handleChange} />
+        </label>
+        <input type="submit" value="Submit" onClick={handleSubmit} />
+      </form>
+    </div>
+  );
+};
 
 export default LoreInput;
