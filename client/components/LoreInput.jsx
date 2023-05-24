@@ -2,16 +2,25 @@ import React, { useEffect } from 'react';
 
 const LoreInput = (props) => {
 
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   const response = await fetch('/api');
+  //   const data = await response.json();
+  //   console.log(data);
+  //   props.setData(data);
+  //   return
+  // }, [])
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const response = await fetch('/api');
     const data = await response.json();
     console.log(data);
     props.setData(data);
-  }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.setApi(props.data.Results);
+    console.log(Array.isArray(data.Results))
+
+    props.setApi(data.Results);
     props.setQuery('')
   };
 

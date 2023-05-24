@@ -4,7 +4,7 @@ import LoreOutput from './LoreOutput.jsx';
 
 const Lore = () => {
   const [query, setQuery] = useState('');
-  const [api, setApi] = useState();
+  const [api, setApi] = useState([]);
   const [data, setData] = useState({});
 
   return (
