@@ -1,0 +1,69 @@
+{
+  "sheet": "FishParameter",
+  "defaultColumn": "Item",
+  "definitions": [
+    {
+      "name": "Text"
+    },
+    {
+      "index": 1,
+      "name": "Item",
+      "converter": {
+        "type": "multiref",
+        "targets": [
+          "EventItem",
+          "Item"
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "name": "GatheringItemLevel",
+      "converter": {
+        "type": "link",
+        "target": "GatheringItemLevelConvertTable"
+      }
+    },
+    {
+      "index": 3,
+      "name": "OceanStars"
+    },
+
+    {
+      "index": 4,
+      "name": "IsHidden"
+    },
+    {
+      "index": 5,
+      "name": "FishingRecordType",
+      "converter": {
+        "type": "link",
+        "target": "FishingRecordType"
+      }
+    },
+    {
+      "index": 6,
+      "name": "FishingSpot",
+      "converter": {
+        "type": "link",
+        "target": "FishingSpot"
+      }
+    },
+    {
+      "index": 7,
+      "name": "GatheringSubCategory",
+      "converter": {
+        "type": "link",
+        "target": "GatheringSubCategory"
+      }
+    },
+    {
+      "index": 8,
+      "name": "IsInLog"
+    },
+    {
+      "index": 9,
+      "name": "AchievementCredit"
+    }
+  ]
+}
