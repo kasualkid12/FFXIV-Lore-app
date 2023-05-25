@@ -14,6 +14,7 @@ app.get('/testerror', (req, res) => {
 
 // Parse all incoming JSON
 app.use(express.json());
+app.use(express.urlencoded())
 
 // Forward all requests at /api/lore to lore router
 // app.use('/api/lore', loreRouter);

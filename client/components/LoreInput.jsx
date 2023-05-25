@@ -13,12 +13,14 @@ const LoreInput = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('/api');
-    const data = await response.json();
-    console.log(data);
-    props.setData(data);
+    const response = await fetch('/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({query: props.query})
+    });
 
-    console.log(Array.isArray(data.Results))
+    const data = await response.json();
+    props.setData(data);
 
     props.setApi(data.Results);
     props.setQuery('')
@@ -33,9 +35,9 @@ const LoreInput = (props) => {
       <form>
         <label onSubmit={handleSubmit}>
           Query:
-          <input type="text" value={props.query} onChange={handleChange} />
+          <input type="text" className='queryInput' value={props.query} onChange={handleChange} />
         </label>
-        <input type="submit" value="Submit" onClick={handleSubmit} />
+        <input type="submit" className='queryButton' value="Submit" onClick={handleSubmit} />
       </form>
     </div>
   );
