@@ -15,13 +15,45 @@ const LoreInput = (props) => {
     const data = await response.json();
     props.setData(data);
 
+    props.setMaxPage(data.Pagination.PageTotal)
     props.setApi(data.Results);
-    props.setQuery('');
   };
 
   const handleChange = (e) => {
     props.setQuery(e.target.value);
   };
+
+  const handleNextPage = async () => {
+    if (props.pageNum < props.maxPage) {
+      
+      const response = await fetch('/api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: props.query, pageNum: props.pageNum + 1}),
+      });
+      
+      const data = await response.json();
+      props.setData(data);
+      props.setApi(data.Results);
+      props.setPageNum(props.pageNum + 1);
+    }
+  }
+
+  const handlePreviousPage = async () => {
+    if (props.pageNum > 1) {
+      
+      const response = await fetch('/api', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: props.query, pageNum: props.pageNum - 1}),
+      });
+      
+      const data = await response.json();
+      props.setData(data);
+      props.setApi(data.Results);
+      props.setPageNum(props.pageNum - 1);
+    }
+  }
 
   return (
     <div>
@@ -43,8 +75,9 @@ const LoreInput = (props) => {
         />
       </form>
       <div className='navButtons'>
-        <button>Previous Page</button>
-        <button>Next Page</button>
+        <button onClick={handlePreviousPage}>Previous Page</button>
+        <p>{props.pageNum} / {props.maxPage}</p>
+        <button onClick={handleNextPage}>Next Page</button>
       </div>
     </div>
   );
