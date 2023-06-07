@@ -18,7 +18,7 @@ jobs:
           command: npm run build
           name: Build app
       - persist_to_workspace:
-          root: ~/SoloProject
+          root: ~/project
           paths:
             - .
   deploy:
