@@ -14,7 +14,7 @@ app.get('/testerror', (req, res) => {
 
 // Parse all incoming JSON
 app.use(express.json());
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }));
 
 // Forward all requests at /api/lore to lore router
 // app.use('/api/lore', loreRouter);
@@ -25,7 +25,7 @@ app.use('/api', apiRouter);
 // Catch all non-valid routes
 app.use('/', (req, res) => {
   console.log("BEEP BOOP, You've entered the catch all");
-  res.sendStatus(404);
+  res.status(404).send('Not found');
 });
 
 // Global Error handler
@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
       err: 'An error occured',
     },
   };
-  const error = Object.create(defaultErr,  err);
+  const error = Object.create(defaultErr, err);
   console.log(error.log);
   res.status(error.status).send(error.message);
 });
