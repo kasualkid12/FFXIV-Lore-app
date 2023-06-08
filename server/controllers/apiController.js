@@ -1,11 +1,9 @@
-const { private_key } = require('../config');
-
 const apiController = {};
 
 apiController.getLore = async (req, res, next) => {
   const { query, pageNum } = req.body
   try {
-    const response = await fetch(`https://xivapi.com/lore?string=${query}&columns=Text,Data&page=${pageNum}&private_key=${private_key}`);
+    const response = await fetch(`https://xivapi.com/lore?string=${query}&columns=Text,Data&page=${pageNum}&private_key=${process.env.PRIVATE_KEY}`);
     const data = await response.json()
     res.locals.lore = data
     return next()
