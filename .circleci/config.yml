@@ -21,6 +21,8 @@ jobs:
           root: ~/project
           paths:
             - .
+      - store_test_results:
+          path: test-results
   # deploy:
   #   executor: heroku/default
   #   steps:
