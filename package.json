@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "bundle": "webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot & nodemon server/server.js",
     "test": "jest --verbose"
   },
